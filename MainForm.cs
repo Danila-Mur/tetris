@@ -21,6 +21,8 @@ namespace Tetris
 	{
 		private GameField GF;
 		private TetrisField Preview;
+		private GameField GF;
+		private TetrisField Preview;
 		private TetrisGame Game;
 		
 		private NewRecordDialog NRDialog;
