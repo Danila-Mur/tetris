@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<chapter version="5.1"
+  xmlns:xlink="http://www.w3.org/1999/xlink"
+  xmlns:xi="http://www.w3.org/2001/XInclude"
+  xmlns:svg="http://www.w3.org/2000/svg"
+  xmlns:m="http://www.w3.org/1998/Math/MathML"
+  xmlns:html="http://www.w3.org/1999/xhtml">
+  <info>
+    <title>Руководство программиста</title>
+  </info>
+  <section>
+    <info>
+      <title>Описание продукта</title>
+    </info>
+    <para>
+    Тетрис» представляет собой головоломку, построенную на использовании геометрических фигур «тетрамино» — разновидности полимино, состоящих из четырёх квадратов.
+    Пользователь может управлять разными блоками различных цветов.
+    </para>
+      <para>
+      Пользователь может управлять разными блоками различных цветов.
+        Каждый раз, когда собирается ряд из блоков, ряд исчезает и добавляются очки.
+      </para>
+    <example>
+    <title>За создание нового экземпляра TetrisGame, готовый к началу игры отвечает следующий код:</title>
+      <programlisting language="c#">
+                	public TetrisGame()
+                    {
+                      Score=0; FiguresDropped=0;
+                      NextFigure=Figure.RandomFigure();
+                      GameOver=false; Paused=false; FigureChanged=false;
+                      GameStarted=DateTime.Now;
+                    }
+      </programlisting>
+    </example>
+    <example>
+      <title>Осуществление сдвига выбранной ячейки вниз, если это возможно. За это отвечает следующий код:</title>
+      <programlisting language="с#">
+                       </summary>
+                        <param name="row">Строка</param>
+                        <param name="col">Столбец</param>
+                        <returns>Возможность дальнейшего сдвига</returns>
+                      protected bool MoveDown(int row, int col)
+                      {
+                        if(Tiles[row, col]!=TileType.Empty)
+                        {
+                          TileType below=Tiles[row+1, col];
+                          if(below==TileType.Empty)
+                          {
+                            Tiles[row+1, col]=Tiles[row, col];
+                            Tiles[row, col]=TileType.Empty;
+                          }
+                          return Tiles[row+2, col]==TileType.Empty; //Still can move it down
+                        }
+                        return false;
+      </programlisting>
+    </example>
+    <example>
+      <title>Удаление заполненного ряда и поля со смещением всех лежащих выше вниз. За это отвечает следюущий код:</title>
+      <programlisting language="c#">
+                <summary>
+                </summary>
+                <returns>Количество уничтоженных ячеек</returns>
+                  public int RemoveFullRows()
+                  {
+                    List<int> FullRows=new List<int>();
+                    
+                    for(int row=0; row<TilesHeight; row++)
+                    {
+                      bool fullrow=true;
+                      for(int col=0; col<TilesWidth; col++)
+                      {
+                        if(Tiles[row, col]==TileType.Empty)
+                        {
+                          fullrow=false;
+                          break;
+                        }
+                      }
+                      if(fullrow)
+                      {
+                        FullRows.Add(row);
+                      }
+                    }
+      </programlisting>
+    </example>
+  </section>
+</chapter>
