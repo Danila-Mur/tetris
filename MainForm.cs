@@ -24,6 +24,9 @@ namespace Tetris
 		private GameField GF;
 		private TetrisField Preview;
 		private TetrisGame Game;
+		Saver.Load();
+			
+			GF=new GameField(18, 12);
 		
 		private NewRecordDialog NRDialog;
 		private RecordsForm RForm;
