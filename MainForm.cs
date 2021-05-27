@@ -11,6 +11,8 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Resources;
 using System.Windows.Forms;
+using System.Resources;
+using System.Windows.Forms;
 
 namespace Tetris
 {
