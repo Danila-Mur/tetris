@@ -52,5 +52,14 @@ namespace Tetris
 				                "Ошибка!", MessageBoxButtons.OK, MessageBoxIcon.Error);
 			}
 		}
+		public AboutDialog()
+		{
+			InitializeComponent();
+		}
+		
+		void Button1Click(object sender, EventArgs e)
+		{
+			DialogResult=DialogResult.OK;
+		}
 	}
 }
